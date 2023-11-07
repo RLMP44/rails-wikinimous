@@ -1,0 +1,15 @@
+<h1>Articles list</h1>
+
+<%= link_to "Add a new article", new_article_path %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article_path(article) %>
+      <p><%= article.content %></p>
+      <%= link_to "Edit article", edit_article_path(article) %>
+      <%= link_to "Delete", article_path(article),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </li>
+  <% end %>
+</ul>
